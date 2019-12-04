@@ -1,20 +1,13 @@
 import React from 'react';
 import './App.css';
 
-class GridSquare extends React.Component {
-    constructor (props){
-        super(props);
-    }
+function GridSquare (props){
 
-    render(){
-        const {style} = this.props;
-
-        return (
-            <div className="GridSquare" style={style}>
-                <img/>
-            </div>
-        );
-    }
+    return (
+        <div className="GridSquare" style={props.style}>
+            <img />
+        </div>
+    );
 }
 
 export default GridSquare;

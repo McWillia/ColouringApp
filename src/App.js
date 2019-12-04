@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import GridSquare from './GridSquare.js';
+import GridContainer from './GridContainer.js';
 
 class App extends React.Component {
 
@@ -22,6 +23,12 @@ class App extends React.Component {
                         style:{
                             "backgroundColor": "red"
                         }
+                    },
+                    {
+                        "column":3,
+                        style:{
+                            "backgroundColor": "orange"
+                        }
                     }
                 ]
             },
@@ -39,25 +46,46 @@ class App extends React.Component {
                         style:{
                             "backgroundColor": "yellow"
                         }
+                    },
+                    {
+                        "column":3,
+                        style:{
+                            "backgroundColor": "pink"
+                        }
+                    }
+                ]
+            },
+            {
+                "row":3,
+                "columns":[
+                    {
+                        "column":1,
+                        style:{
+                            "backgroundColor": "black"
+                        }
+                    },
+                    {
+                        "column":2,
+                        style:{
+                            "backgroundColor": "white"
+                        }
+                    },
+                    {
+                        "column":3,
+                        style:{
+                            "backgroundColor": "purple"
+                        }
                     }
                 ]
             }
         ];
 
-        const grid = styles.map((row, columns) => {
-            console.log(row)
-            return row.columns.map((column)=>{
-                return <GridSquare style={column.style} />
-            });
-        });
-
-        console.log(grid);
 
         return (
 
             <div className="App">
               <header className="App-header">
-              {grid}
+                  <GridContainer styles={styles} />
               </header>
           </div>
         );

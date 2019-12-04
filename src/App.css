@@ -28,7 +28,6 @@ div.GridSquare {
   float:left;
 }
 
-div.Red {
-    /* border-color: #eb4034; */
-    background-color: #eb4034;
+.GridContainer{
+    display: grid;
 }
