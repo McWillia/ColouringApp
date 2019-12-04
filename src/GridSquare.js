@@ -7,10 +7,10 @@ class GridSquare extends React.Component {
     }
 
     render(){
-        const {colour} = this.props;
+        const {style} = this.props;
 
         return (
-            <div class="GridSquare" >
+            <div className="GridSquare" style={style}>
                 <img/>
             </div>
         );
