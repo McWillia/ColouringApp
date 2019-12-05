@@ -6,8 +6,6 @@ class GridContainer extends React.Component {
 
     render (){
         const {styles, selected} = this.props;
-        console.log("HERHEH");
-        console.log(Object.values(styles));
 
         const rows = Object.values(styles).map((row, j) => {
             const rowOut = row.map((style, i)=>{
@@ -15,13 +13,15 @@ class GridContainer extends React.Component {
                             style={style.style}
                             key={row.row + " - " + i}
                             selected={selected}
-                            onClick={(val) => this.props.onClick(val)}
                             rowNumber={j}
                             colNumber={i}
+                            onMouseDown={(event) => this.props.onMouseDown(event)}
+                            onMouseUp={(event)=>this.props.onMouseUp(event)}
+                            onMouseOver={(event)=>this.props.onMouseOver(event)}
                         />;
             });
 
-            return <div>{rowOut}</div>;
+            return <div key={row.row}>{rowOut}</div>;
         });
 
         return <div className="GridContainer">{rows}</div>;
@@ -29,10 +29,3 @@ class GridContainer extends React.Component {
 }
 
 export default GridContainer;
-
-/*return <GridRow
-        row={row}
-        key={row.row}
-        selected={selected}
-        onClick={(value) => this.props.onClick(value)}
-        />;*/

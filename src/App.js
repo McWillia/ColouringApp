@@ -18,24 +18,28 @@ class App extends React.Component {
         this.setState({selected:value.colour});
     }
 
+
+
     render(){
         return (
             <div className="App">
               <header className="App-header">
-                <p>
+                <div>
                     <ColourPicker
-                        onClick={(value) => this.handleColourPicker(value)}
+                        onMouseDown={()=>{}}
+                        onMouseUp={(value) => this.handleColourPicker(value)}
+                        onMouseOver={()=>{}}
                         selected={this.state.selected}
                         />
-                </p>
+                </div>
                 <hr/>
-                <p>
+                <div>
                     <Canvas
-                        size={10}
+                        size={12}
                         selected={this.state.selected}
 
                         />
-                </p>
+                </div>
               </header>
           </div>
         );

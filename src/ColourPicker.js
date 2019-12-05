@@ -67,7 +67,9 @@ class ColourPicker extends React.Component {
                 <GridContainer
                     selected={selected}
                     styles={styles}
-                    onClick={(value) => this.props.onClick(value)}
+                    onMouseDown={()=>{}}
+                    onMouseUp={(value) => this.props.onMouseUp(value)}
+                    onMouseOver={()=>{}}
                     />
             </div>
         );

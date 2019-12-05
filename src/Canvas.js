@@ -15,23 +15,26 @@ class Canvas extends React.Component {
         }
 
         var grid = [];
-        for (var i = 0; i < size; i++) {
+        for (var j = 0; j < size; j++) {
             grid.push(col);
         }
-        this.state = grid;
+        this.state = {
+            grid:grid,
+            colouring:false
+        };
 
-        this.handleClick = this.handleClick.bind(this);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handleMouseOver = this.handleMouseOver.bind(this);
 
     }
 
-
-    handleClick(event){
-
-        const obj = Object.values(this.state).map((row, i) => {
-            if (i === event.rowNumber) {
+    colourSquare (x, y) {
+        const obj = Object.values(this.state.grid).map((row, i) => {
+            if (i === x) {
 
                 return row.map((column,j) => {
-                    if (j === event.colNumber) {
+                    if (j === y) {
                         // console.log(column);
                         return {style:{backgroundColor:this.props.selected}};
                     } else {
@@ -43,23 +46,42 @@ class Canvas extends React.Component {
             }
         });
 
-        console.log(obj);
-
-
-        this.setState(
-            obj
-        )
+        this.setState({
+            grid:obj
+        })
     }
 
 
+    handleMouseDown(event){
+        this.colourSquare(event.rowNumber, event.colNumber);
+        this.setState({colouring:true});
+    }
+
+    handleMouseUp(event){
+        this.colourSquare(event.rowNumber, event.colNumber);
+        this.setState({colouring:false});
+
+    }
+    handleMouseOver(event){
+        if (this.state.colouring) {
+            this.colourSquare(event.rowNumber, event.colNumber);
+        }
+    }
+
     render (){
-        console.log(Object.values(this.state));
 
         return (
-            <div className="Canvas">
+            <div
+                className="Canvas"
+                onMouseLeave={()=>{this.setState({colouring:false})}}
+                >
                 <GridContainer
-                    styles={this.state}
-                    onClick={(value) => this.handleClick(value)}
+                    styles={this.state.grid}
+                    // onClick={(value) => this.handleClick(value)}
+                    // onDragEnter={(event) => this.handleDragEnter(event)}
+                    onMouseDown={(event) => this.handleMouseDown(event)}
+                    onMouseUp={(event)=>this.handleMouseUp(event)}
+                    onMouseOver={(event)=>this.handleMouseOver(event)}
                     />
             </div>
         );
