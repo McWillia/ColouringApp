@@ -13,7 +13,7 @@ class GridSquare extends React.Component {
         this.handleMouseOver = this.handleMouseOver.bind(this);
 
         this.state = {
-            colour:this.props.style.backgroundColor,
+            // colour:this.props.style.backgroundColor,
             rowNumber:rowNumber,
             colNumber:colNumber
         }
@@ -21,18 +21,18 @@ class GridSquare extends React.Component {
 
 
     handleMouseDown(event){
-        const {rowNumber, colNumber, colour} = this.state
-        this.props.onMouseDown({"colour":colour, "rowNumber":rowNumber, "colNumber":colNumber});
+        const {rowNumber, colNumber} = this.state
+        this.props.onMouseDown({"colour":this.props.style.backgroundColor, "rowNumber":rowNumber, "colNumber":colNumber});
     }
 
     handleMouseUp(event){
-        const {rowNumber, colNumber, colour} = this.state
-        this.props.onMouseUp({"colour":colour, "rowNumber":rowNumber, "colNumber":colNumber});
+        const {rowNumber, colNumber} = this.state
+        this.props.onMouseUp({"colour":this.props.style.backgroundColor, "rowNumber":rowNumber, "colNumber":colNumber});
     }
 
     handleMouseOver(event){
-        const {rowNumber, colNumber, colour} = this.state
-        this.props.onMouseOver({"colour":colour, "rowNumber":rowNumber, "colNumber":colNumber});
+        const {rowNumber, colNumber} = this.state
+        this.props.onMouseOver({"colour":this.props.style.backgroundColor, "rowNumber":rowNumber, "colNumber":colNumber});
     }
 
     render (){
